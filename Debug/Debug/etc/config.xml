@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Debug_Debug>
+			<version>1.0.0</version>
+		</Debug_Debug>
+	</modules>
+	<frontend>
+		<routers>
+			<Sample_Contact>
+				<use>standard</use>
+				<args>
+					<module module="Debug_Debug">debug_debug</module>
+					<frontName>debugdebug</frontName>
+				</args>
+			</Sample_Contact>
+		</routers>
+		<layout>
+			<updates>
+				<sample_contact>
+					<file>sample_contact.xml</file>
+				</sample_contact>
+			</updates>
+		</layout>
+	</frontend>
+	<admin>
+		<routers>
+			<adminhtml>
+				<use>admin</use>
+				<args>
+					<modules>
+						<Sample_Adminhtml before="Mage_Adminhtml">Sample_Contact_Adminhtml</Sample_Adminhtml>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<adminhtml>
+		<layout>
+			<updates>
+				<Sample_Adminhtml>
+					<file>sample_clider.xml</file>
+				</Sample_Adminhtml>
+			</updates>
+		</layout>
+	</adminhtml>
+</config>
