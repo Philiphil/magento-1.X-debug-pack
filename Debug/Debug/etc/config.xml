@@ -7,41 +7,42 @@
 	</modules>
 	<frontend>
 		<routers>
-			<Sample_Contact>
+			<Debug_Debug>
 				<use>standard</use>
 				<args>
 					<module module="Debug_Debug">debug_debug</module>
 					<frontName>debugdebug</frontName>
 				</args>
-			</Sample_Contact>
+			</Debug_Debug>
 		</routers>
-		<layout>
-			<updates>
-				<sample_contact>
-					<file>sample_contact.xml</file>
-				</sample_contact>
-			</updates>
-		</layout>
 	</frontend>
-	<admin>
-		<routers>
-			<adminhtml>
-				<use>admin</use>
-				<args>
-					<modules>
-						<Sample_Adminhtml before="Mage_Adminhtml">Sample_Contact_Adminhtml</Sample_Adminhtml>
-					</modules>
-				</args>
-			</adminhtml>
-		</routers>
-	</admin>
+	<global>
+		<models>
+			<Debug_Debug>Debug_Debug_Model</Debug_Debug>
+		</models>
+		<events>
+			<adminhtml_cache_flush_system>
+				<observers>
+					<debug_onflush>
+						<type>singleton</type>
+						<class>Debug_Debug_Model_Observer</class>
+						<method>onFlush</method>
+					</debug_onflush>
+				</observers>
+			</adminhtml_cache_flush_system>
+		</events>
+	</global>
 	<adminhtml>
-		<layout>
-			<updates>
-				<Sample_Adminhtml>
-					<file>sample_clider.xml</file>
-				</Sample_Adminhtml>
-			</updates>
-		</layout>
+		<events>
+			<controller_action_predispatch>
+				<observers>
+					<debug_onevent>
+						<type>singleton</type>
+						<class>Debug_Debug_Model_Observer</class>
+						<method>trackEvents</method>
+					</debug_onevent>
+				</observers>
+			</controller_action_predispatch>
+		</events>
 	</adminhtml>
 </config>
