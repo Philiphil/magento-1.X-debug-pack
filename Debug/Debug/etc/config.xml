@@ -25,7 +25,7 @@
 				<observers>
 					<debug_onflush>
 						<type>singleton</type>
-						<class>Debug_Debug_Model_Observer</class>
+						<class>Debug_Debug/Observer</class>
 						<method>onFlush</method>
 					</debug_onflush>
 				</observers>
@@ -38,7 +38,7 @@
 				<observers>
 					<debug_onevent>
 						<type>singleton</type>
-						<class>Debug_Debug_Model_Observer</class>
+						<class>Debug_Debug/Observer</class>
 						<method>trackEvents</method>
 					</debug_onevent>
 				</observers>

@@ -1,16 +1,16 @@
 <?php
 
-function dispatchEvents($observer)
+class Debug_Debug_Model_Observer extends Varien_Event_Observer
 {
-   if ($observer->getEvent()->getControllerAction()->getFullActionName() == "adminhtml_sales_order_addressSave")
-       Mage::dispatchEvent('my_custom_event_observer', []);
+    public function dispatchEvents(Varien_Event_Observer $observer){
+        if ($observer->getEvent()->getControllerAction()->getFullActionName() == "adminhtml_sales_order_addressSave")
+                Mage::dispatchEvent('my_custom_event_observer', []);
+        return $this;
+    }
 
-       return $this;
-}
+    public function trackEvents(Varien_Event_Observer $observer){
+        Mage::log("track event:" . $observer->getEvent()->getControllerAction()->getFullActionName());
+        return $this;
+    }
 
-function trackEvents($observer)
-{
-   Mage::log("track event:" . $observer->getEvent()->getControllerAction()->getFullActionName());
-
-   return $this;
-}
+ }
